@@ -8,6 +8,12 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 require('dotenv').config ;
 var app = express();
+const MongoClient = require("mongodb").MongoClient;
+
+require("dotenv").config();
+const databaseName = "serieswatched";
+const mongoDbUrl = process.env.MONGODB_URL;
+const collectionName = "series";
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
