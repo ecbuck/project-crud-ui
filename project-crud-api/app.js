@@ -1,31 +1,31 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-require('dotenv').config ;
+require('dotenv').config() ;
 var app = express();
-const MongoClient = require("mongodb").MongoClient;
+// const MongoClient = require("mongodb").MongoClient;
 
-require("dotenv").config();
-const databaseName = "serieswatched";
-const mongoDbUrl = process.env.MONGODB_URL;
-const collectionName = "series";
+
+// const databaseName = "serieswatched";
+// const mongoDbUrl = process.env.ATLAS_CONNECTION;
+// const collectionName = "series";
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(logger('dev'));
+// app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+// app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/api', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

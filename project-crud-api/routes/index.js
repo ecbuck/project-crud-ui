@@ -1,9 +1,11 @@
-var express = require('express');
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
+// const bodyParser = require("body-parser");
+const DAL = require("../dataAccessLayer");
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/series', function(req, res, next) {
+  DAL.getAllSeries(req, res);
 });
 
 module.exports = router;
